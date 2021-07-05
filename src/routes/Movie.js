@@ -59,13 +59,12 @@ const reducer = (state,action) => {
 function Movie() {
 
     const [state,dispatch] = useReducer(reducer,{
-        loading : false,
+        loading : true,
         data : null,
         error : null
     })
 
 
-    console.log(state)
     const fetchData = async (url) => {
 
         dispatch({type:"LOADING"})
