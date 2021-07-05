@@ -1,6 +1,6 @@
 import React, { useContext,useState } from 'react'
 import styled from 'styled-components'
-import TodosContext from '../../contexts/todos-context'
+import {useTodosDispatch, useTodosState} from '../../contexts/todos-context'
 import Button from '../UI/Button'
 import Form from '../UI/Form'
 
@@ -35,11 +35,13 @@ const TodoInput = styled.input`
 
 
 function TodoList(props){
-    const TodoContext = useContext(TodosContext)
+    const TodoContext = useTodosState();
+    const dispatch = useTodosDispatch();
     const [isRenaming,setIsRenaming] = useState(false)
     const [check,setIsCheck] = useState(false);
     const [input,setInput] = useState('')
 
+    console.log(input)
     const onChange = (e) => {
         setInput(e.target.value)
     }
@@ -52,15 +54,14 @@ function TodoList(props){
     const onSubmit = (e) => {
         e.preventDefault();
         const index = props.id
-
-        TodoContext.onRename(input,index)
+        dispatch({type:"RENAME",todo:input,index})
         setInput('')
         setIsRenaming(false)
         
     }
 
     const deleteTodo = (e) => {
-        TodoContext.onDelete(e.target.previousSibling.previousSibling.innerText)
+        dispatch({type:"DELETE",todo:e.target.previousSibling.previousSibling.innerText})
     }
 
     const checkTodo = (e) => {

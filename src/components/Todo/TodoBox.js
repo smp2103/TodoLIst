@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import TodoList from './TodoList'
-import TodosContext from '../../contexts/todos-context'
+import {useTodosState} from '../../contexts/todos-context'
 
 
 
@@ -12,13 +12,12 @@ const Box = styled.div`
 
 function TodoBox() {
 
-    const TodoContext = useContext(TodosContext)
-    const todos = TodoContext.todos
-    
+    const TodoContext = useTodosState();
+
     return (
 
         <Box>
-            {todos.map((el,index)=>{
+            {TodoContext.map((el,index)=>{
                 return <TodoList id={index} key = {index} todo = {el}></TodoList>
             })}
         </Box>

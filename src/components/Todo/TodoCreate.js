@@ -1,6 +1,6 @@
 import React, { useContext,useState } from 'react'
 import styled from 'styled-components'
-import TodosContext from '../../contexts/todos-context'
+import {useTodosDispatch, useTodosState} from '../../contexts/todos-context'
 import Form from '../UI/Form'
 
 
@@ -19,7 +19,7 @@ const Input = styled.input`
 
 function TodoCreate() {
 
-    const TodoContext = useContext(TodosContext)
+    const dispatch = useTodosDispatch();
     const [input,setInput] = useState('')
 
     const onChange = (e) => {
@@ -28,7 +28,7 @@ function TodoCreate() {
 
     const createTodo = (e) => {
         e.preventDefault();
-        TodoContext.onAdd(input)
+        dispatch({type:'CREATE',todo:input})
         setInput('')
     }
 
