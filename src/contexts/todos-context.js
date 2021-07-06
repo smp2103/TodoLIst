@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useReducer, useState, useRef} from 'react' 
+import React, {createContext, useContext, useReducer, useState} from 'react' 
 
 const initialTodos = [];
 
@@ -23,7 +23,6 @@ const TodosNextIdContext = createContext();
 
 export const TodosContextProvider = ({children}) => {
     const [state,dispatch] = useReducer(todosReducer,initialTodos)
-    const nextId = useRef(state.length)
 
     return (
         <TodosStateContext.Provider value={state}>
