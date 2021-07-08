@@ -41,7 +41,6 @@ function TodoList(props){
     const [check,setIsCheck] = useState(false);
     const [input,setInput] = useState('')
 
-    console.log(input)
     const onChange = (e) => {
         setInput(e.target.value)
     }

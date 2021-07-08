@@ -8,12 +8,12 @@ import { TodosContextProvider } from '../contexts/todos-context';
 function Todo() {
   
   return (
-    <TodosContextProvider>
+    <>
       <Header />
       <Section>
       <TodoTemplate></TodoTemplate>
       </Section>
-    </TodosContextProvider>
+    </>
   );
 }
 

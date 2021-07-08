@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import TodoBox from './TodoBox'
 import TodoCreate from './TodoCreate'
+import { TodosContextProvider } from '../../contexts/todos-context'
 
 const Template = styled.div`
         max-width : 600px!important;
@@ -22,11 +23,14 @@ function TodoTemplate(){
 
 
     return (
-        <Template>
+        
+        <TodosContextProvider>
             <Description>Todo List</Description>
-            <TodoCreate></TodoCreate>
-            <TodoBox></TodoBox>
-        </Template>
+            <Template>
+                <TodoCreate></TodoCreate>
+                <TodoBox></TodoBox>
+            </Template>
+        </TodosContextProvider>
     )
 }
 
