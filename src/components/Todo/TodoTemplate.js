@@ -23,14 +23,15 @@ function TodoTemplate(){
 
 
     return (
-        
-        <TodosContextProvider>
+        <React.Fragment>
             <Description>Todo List</Description>
-            <Template>
-                <TodoCreate></TodoCreate>
-                <TodoBox></TodoBox>
-            </Template>
-        </TodosContextProvider>
+            <TodosContextProvider>
+                <Template>
+                    <TodoCreate></TodoCreate>
+                    <TodoBox></TodoBox>
+                </Template>
+            </TodosContextProvider>
+        </React.Fragment>
     )
 }
 
